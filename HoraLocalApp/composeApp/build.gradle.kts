@@ -50,6 +50,7 @@ kotlin {
         val wasmJsMain by getting {
             dependsOn(webMain)
             dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
                 implementation(npm("@js-joda/core", "3.2.0"))
                 implementation(npm("@js-joda/timezone", "2.3.0"))
             }
