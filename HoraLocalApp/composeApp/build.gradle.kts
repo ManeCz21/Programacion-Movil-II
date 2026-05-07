@@ -41,6 +41,20 @@ kotlin {
     }
     
     sourceSets {
+        val webMain by creating {
+            dependsOn(commonMain.get())
+        }
+        val jsMain by getting {
+            dependsOn(webMain)
+        }
+        val wasmJsMain by getting {
+            dependsOn(webMain)
+            dependencies {
+                implementation(npm("@js-joda/core", "3.2.0"))
+                implementation(npm("@js-joda/timezone", "2.3.0"))
+            }
+        }
+
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
